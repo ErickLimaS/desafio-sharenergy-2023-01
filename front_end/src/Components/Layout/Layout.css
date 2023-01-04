@@ -27,9 +27,17 @@
     color: var(--white);
 }
 
+@media(min-width: 720px) {
+
+    #header {
+        background-color: var(--primary);
+    }
+
+}
+
 #sidebar {
     grid-area: sidebar;
-    
+
     transition: all ease-in-out 750ms;
     background-color: var(--primary);
     color: var(--white);
@@ -53,7 +61,7 @@
 
 
 #main_content {
-    
+
     min-height: 80vh;
 
     grid-area: main;

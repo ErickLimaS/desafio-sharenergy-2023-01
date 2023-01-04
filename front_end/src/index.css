@@ -7,11 +7,15 @@
   --black-75: hsla(207, 92%, 5%, 0.75);
   --black-50: hsla(207, 92%, 5%, 0.50);
   --black-25: hsla(207, 92%, 5%, 0.25);
+  --black-10: hsla(207, 92%, 5%, 0.10);
+  --black-5: hsla(207, 92%, 5%, 0.05);
 
   --white: #fff;
   --white-75: hsla(0, 0%, 100%, 0.75);
   --white-50: hsla(0, 0%, 100%, 0.5);
   --white-25: hsla(0, 0%, 100%, 0.25);
+  --white-10: hsla(0, 0%, 100%, 0.10);
+  --white-5: hsla(0, 0%, 100%, 0.05);
 
   /* FS = 16px -> 20px, 1.2 TS -> 1.333 TS */
   --fs-minus-2: clamp(0.69rem, calc(0.69rem + 0.01vw), 0.70rem);
@@ -40,6 +44,7 @@ body {
   padding: 0;
 
 }
+
 h1, h2, h3, h4, h5, h6, p {
 
   color: var(--black);
