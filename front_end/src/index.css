@@ -80,6 +80,12 @@ a {
   text-decoration: none;
 }
 
+li{
+
+  list-style-type: none;
+
+}
+
 input, select {
   font-size: var(--fs-minus-1);
 }
