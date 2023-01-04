@@ -43,7 +43,7 @@
     color: var(--white);
 }
 
-@media((min-width: 720px) and (max-width: 1020px)) {
+@media((min-width: 720px) and (max-width: 1019px)) {
     #sidebar {
 
         min-width: 23vw;
@@ -64,6 +64,8 @@
 
     min-height: 80vh;
 
+    width: auto;
+
     grid-area: main;
 
     margin: 8px;
@@ -74,7 +76,8 @@
 
     #main_content {
 
-        margin: 16px;
+        /* margin: 16px; */
+        margin: 16px auto;
 
     }
 

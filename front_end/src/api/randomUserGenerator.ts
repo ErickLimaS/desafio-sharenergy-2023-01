@@ -1,24 +1,22 @@
 import Axios from "axios"
 
-const qtyResults = 10
-const URL = `https://randomuser.me/api/?results=${qtyResults}`
+// const URL = `https://randomuser.me/api/?results=${qtyResults}`
+const URL = `https://randomuser.me/api/`
 
 // configutarion for requests
-const reqConfig = () => {
+const reqConfig = (pagination: number, results?: number, seed?: string) => {
 
     return {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
-        url: URL
+        url: `${URL}?${pagination ? `page=${pagination}` : ''}${results ? `&results=${results}` : ''}${seed ? `&seed=${seed}` : ''}`
     }
 
 }
 
-export async function getUsers() {
+export async function getUsers(pagination: number) {
 
-    const { data }: { data: { results: object } } = await Axios(reqConfig())
-
-    console.log(data)
+    const { data }: { data: { results: object } } = await Axios(reqConfig(pagination, 5))
 
     return data.results
 
