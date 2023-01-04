@@ -27,12 +27,55 @@
 
     cursor: pointer;
 
-    padding: 8px 12px;
     border-radius: 50%;
 
-    border: 2px solid var(--white);
-    background-color: var(--secondary);
-    color: white;
+    border: none;
+    background-color: transparent;
+
+}
+
+@media(min-width: 720px) {
+
+    .container .nav_heading button {
+
+        padding: 4px;
+
+        border: 2px solid var(--white-75);
+
+    }
+
+}
+
+
+@media(min-width: 720px) {
+
+    .container .nav_heading button:hover {
+
+        border: 2px solid var(--white);
+
+    }
+
+}
+
+.container .nav_heading button span[data-mobile-icon='true'],
+.container .nav_heading button span[data-desktop-icon='true'] {
+
+    display: flex;
+
+}
+
+.container .nav_heading button span svg {
+
+    fill: var(--white);
+
+    width: 20px;
+    height: 20px;
+
+}
+
+.container .nav_heading button span svg path {
+
+    transform: scale(1.2);
 
 }
 
@@ -69,8 +112,8 @@
 @media(min-width: 720px) {
     .container[data-shrink-sidebar='true'] {
 
-        min-width: calc(12vw - 10px) !important;
-        max-width: calc(12vw - 10px) !important;
+        min-width: calc(10vw - 10px) !important;
+        max-width: calc(10vw - 10px) !important;
 
     }
 }
@@ -79,8 +122,8 @@
 
     .container[data-shrink-sidebar='true'] {
 
-        min-width: 8vw !important;
-        max-width: 8vw !important;
+        min-width: 6vw !important;
+        max-width: 6vw !important;
 
     }
 
@@ -140,6 +183,8 @@
 
     padding: 16px;
 
+    overflow: hidden;
+
 }
 
 .container[data-shrink-sidebar='true'] ul, .container[data-shrink-sidebar='true'] ul * {
@@ -153,8 +198,6 @@
 
     margin: 6px 0;
 
-    padding: 8px;
-
     background-color: var(--white);
     border: 2px solid var(--secondary);
     border-radius: 2px;
@@ -165,12 +208,38 @@
 
 .container ul li a {
 
-    display: block;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
 
     font-size: var(--fs-minus-1);
     color: var(--black);
 
 }
+
+.container ul li a svg {
+
+    min-width: 16px;
+    min-height: 16px;
+
+    fill: var(--black-75);
+
+}
+
+.container ul li a:hover svg {
+
+    fill: var(--secondary);
+
+}
+
+.container ul li a svg#resize path {
+
+    transform: scale(0.04);
+
+}
+
 
 .container ul li a:hover span {
 
@@ -179,7 +248,6 @@
     animation: slide forwards 100ms;
 
     display: block;
-
 
 }
 

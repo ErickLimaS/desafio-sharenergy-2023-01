@@ -111,21 +111,33 @@ header #form_search button[type='submit'] {
 }
 
 
-header .buttons_container {
+header .user {
 
     display: flex;
     gap: 8px;
 
+    position: relative;
+    top: 0;
+
 }
 
-header .buttons_container button {
+header .user>button {
+
+    cursor: pointer;
+
+    position: relative;
+    top: 0;
 
     padding: 12px 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 0 16px;
 
     background-color: transparent;
 
     border: 2px solid var(--white);
-    border-radius: 16px;
+    border-radius: 8px;
 
     font-weight: 600;
     color: var(--white);
@@ -134,10 +146,93 @@ header .buttons_container button {
 
 @media(min-width: 560px) {
 
-    header .buttons_container button {
+    header .user>button {
 
         padding: 16px 24px;
 
     }
+
+}
+
+header .user[data-expanded='true']>button {
+
+    background-color: var(--secondary);
+
+}
+
+header .user #user_menu {
+
+    z-index: 1;
+
+    position: absolute;
+    top: 52px;
+    right: 0;
+
+    background-color: var(--white);
+    border: 2px solid var(--secondary);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+
+    box-shadow: 2px 2px 2px 2px var(--black-50);
+
+}
+
+@media(min-width: 560px) {
+
+    header .user #user_menu {
+
+        top: 60px;
+
+    }
+
+}
+
+header .user #user_menu[data-expanded='false'] {
+
+    display: none;
+
+}
+
+header .user #user_menu[data-expanded='true'] li {
+
+    list-style-type: none;
+
+    display: flex;
+
+    padding: 8px;
+
+}
+
+header .user #user_menu[data-expanded='true'] li button {
+
+    cursor: pointer;
+
+    min-width: 140px;
+
+    padding: 8px 16px;
+
+    border: none;
+    background-color: transparent;
+
+    border-bottom: 2px solid;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--primary);
+
+}
+
+
+header .user #user_menu[data-expanded='true'] li:hover button {
+
+    background-color: var(--black-10);
+
+}
+
+header .user #user_menu[data-expanded='true'] li button svg {
+
+    margin-right: 8px;
+    fill: var(--primary);
 
 }

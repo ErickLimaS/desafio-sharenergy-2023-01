@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "svg": "svgr -d src/img/svg src/img/svg"
+    "svg_converter": "svgr -d src/img/icons/ src/img/svg"
   },
   "eslintConfig": {
     "extends": [
