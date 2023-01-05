@@ -31,6 +31,7 @@ function User({ props }: { props: UserTypes }) {
 
                 <img
                     src={props.picture.medium}
+                    width='60px' height='auto'
                     alt={`${props.name.title} ${props.name.first} ${props.name.last}`}
                 >
                 </img>

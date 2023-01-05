@@ -5,6 +5,7 @@ import Styles from './Home.module.css'
 import Loading from '../../img/icons/Loading200Px'
 import Search from '../../img/icons/Search'
 import Plus from '../../img/icons/Plus'
+import UserSearchResult from '../../Components/Home/UserSearchResult'
 
 interface UserTypes {
 
@@ -31,10 +32,12 @@ interface UserTypes {
 function Home() {
 
   const [users, setUsers] = useState<any>()
-  const [searchResults, setSearchResults] = useState<any | null>(null)
+  const [searchResults, setSearchResults] = useState<UserTypes[] | any>([])
   const [loading, setLoading] = useState<boolean>(false)
 
-  const [increaseResultsOnPage, setIncreaseResultsOnPage] = useState<number>(1)
+  const searchInput = React.useRef<HTMLInputElement>(null)
+
+  const [paginationForMoreResults, setPaginationForMoreResults] = useState<number>(1)
 
   // fetch other users info to be displayed on home page
   async function fetchUsersOnHomePage(pagination: number) {
@@ -62,28 +65,160 @@ function Home() {
 
   }
 
-  // handles search input
-  async function handleSearchForm(e: React.FormEvent) {
+  // handles Search form
+  function handleSearchForm(e: React.FormEvent) {
 
     e.preventDefault()
 
+    // if submit is clicked, runs function to filter users
+    searchWhileTyping()
 
-    // gets results for the content searched
-    const res = await getUsers(increaseResultsOnPage)
+  }
 
-    console.log(res)
+  // runs when User is typing on Search Input, filtering users results on Home Page
+  function searchWhileTyping() {
 
-    setSearchResults(res)
+    // resets Results State if input is empty
+    if (searchInput.current!.value === '') {
 
-    setLoading(false)
+      setSearchResults([])
+
+      return
+
+    }
+
+    const searchedItem: string = searchInput.current!.value.toLowerCase()
+
+    // Filters results on Users State, then returns the User 
+    users.forEach((user: UserTypes) => {
+
+      // Lower case and slice all values to be filtered even more, getting closer to the desirable result when its been typed on input
+      const userFirstName: string = user.name.first.toLowerCase().slice(0, searchedItem.length)
+      const userEmail: string = user.email.toLowerCase().slice(0, searchedItem.length)
+      const userUsername: string = user.login.username.toLowerCase().slice(0, searchedItem.length)
+
+      // filters which user was already added to Results State. If true, wont be added.
+      function isUserAlreadyOnResults(currentUserToBeInserted: UserTypes) {
+
+        if (searchResults.length === 0) {
+
+          return false
+
+        }
+
+        const isDoubled = searchResults.every((userOnResults: UserTypes) => {
+          if (currentUserToBeInserted.email === userOnResults.email) {
+
+            console.log(currentUserToBeInserted.email, userOnResults.email)
+
+            return true
+
+          }
+
+          return false
+        })
+
+        return isDoubled
+
+      }
+
+      // checks if the input value is equal with the first name
+      if (searchedItem === userFirstName) {
+
+        // console.log(user.name.first)
+
+        // console.log(isUserAlreadyOnResults(user))
+
+        switch (isUserAlreadyOnResults(user)) {
+
+          case true:
+
+            return
+
+          case false:
+
+            setSearchResults((curr: any) => [...curr, user])
+
+            return
+
+          default:
+
+            setSearchResults(user)
+
+            return
+
+        }
+
+      }
+
+      // checks if the input value is equal with the email
+      else if (searchedItem === userEmail) {
+
+        // console.log(user.name.first)
+
+        // console.log(isUserAlreadyOnResults(user))
+
+        switch (isUserAlreadyOnResults(user)) {
+
+          case true:
+
+            return
+
+          case false:
+
+            setSearchResults((curr: any) => [...curr, user])
+
+            return
+
+          default:
+
+            setSearchResults(user)
+
+            return
+
+        }
+
+      }
+
+      // checks if the input value is equal with the username
+      else if (searchedItem === userUsername) {
+
+        // console.log(user.name.first)
+
+        // console.log(isUserAlreadyOnResults(user))
+
+        switch (isUserAlreadyOnResults(user)) {
+
+          case true:
+
+            return
+
+          case false:
+
+            setSearchResults((curr: any) => [...curr, user])
+
+            return
+
+          default:
+
+            setSearchResults(user)
+
+            return
+
+
+        }
+
+      }
+
+    })
 
   }
 
   useEffect(() => {
 
-    fetchUsersOnHomePage(increaseResultsOnPage)
+    fetchUsersOnHomePage(paginationForMoreResults)
 
-  }, [increaseResultsOnPage])
+  }, [paginationForMoreResults])
 
   return (
     <div className={Styles.container}>
@@ -92,17 +227,45 @@ function Home() {
       {/* <p>Após o Login, a página principal deve conter uma listagem de usuários gerada a partir da api Random User Generator, a lista deve conter a foto do usuário, nome completo, email, username e idade. Além disso, os requests devem ser páginados, porém, é de critério do participante do desafio a quantidade de resultados a serem exibidos por página e variações para o mesmo. Também, deve haver uma search para buscar usuários por nome, email ou username;</p> */}
 
       <form
+        role='search'
         onSubmit={(e) => handleSearchForm(e)}
         id={Styles.form_search}
       >
-        <input type='text'
-          id='search' name='search'
-          placeholder='Pesquisar por...'
-        ></input>
-        <button type='submit' title='Procurar Usuário'>
-          <Search alt='Lupa' />
-        </button>
+        <div>
+
+          <input type='text'
+            aria-labelledby='small_form_description'
+            id='search' name='search'
+            aria-controls='search_results'
+            ref={searchInput}
+            onChange={() => searchWhileTyping()}
+            placeholder='Pesquisar por...'
+          ></input>
+
+          <button type='submit' title='Procurar Usuário'>
+            <Search alt='Lupa' />
+          </button>
+
+        </div>
+
+        <small id='small_form_description'>
+          Pesquise por usuários dessa página, usando nome, email ou username.
+        </small>
+
       </form>
+
+      {searchResults.length > 0 && (
+        <div id='search_results' className={Styles.search_results_container} aria-haspopup={searchResults.length > 0 ? true : false}>
+
+          <ul>
+
+            {searchResults.map((item: UserTypes, key: number) => (
+              <UserSearchResult key={key} props={item} />
+            ))}
+
+          </ul>
+        </div>
+      )}
 
       <div className={Styles.users_container}>
         <h2>Usuários</h2>
@@ -117,7 +280,7 @@ function Home() {
 
         <div className={Styles.button_container}>
 
-          <button onClick={() => setIncreaseResultsOnPage((curr) => curr + 1)}>
+          <button onClick={() => setPaginationForMoreResults((curr) => curr + 1)}>
             <Plus />
             Ver mais usuários
           </button>
