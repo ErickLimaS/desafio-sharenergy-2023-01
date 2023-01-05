@@ -1,11 +1,12 @@
 import React from 'react'
+import Styles from './UserSearchResult.module.css'
 
 interface UserTypes {
 
   email: string,
   picture: {
     medium: string,
-    thumnail: string
+    thumbnail: string
   },
   name: {
     title: string,
@@ -24,28 +25,39 @@ interface UserTypes {
 function UserSearchResult({ props }: { props: UserTypes }) {
 
   return (
-    <li>
+    <li className={Styles.container}>
 
+      <div className={Styles.card_heading}>
 
-      <img
-        src={props.picture.medium}
-        alt={`${props.name.title} ${props.name.first} ${props.name.last}`}
-      >
-      </img>
+        <img
+          src={props.picture.thumbnail}
+          width='46px' height='auto'
+          alt={`${props.name.title} ${props.name.first} ${props.name.last}`}
+        >
+        </img>
 
-      <div>
+        <div className={Styles.card_user_info}>
 
-        <h3>
-          {`${props.name.title} ${props.name.first} ${props.name.last}`}
-          {' '}
-          <span>{props.dob.age}</span>
-        </h3>
+          <div className={Styles.card_user_name_age}>
+            <h3>
+              <span>{props.name.title}</span> {`${props.name.first} ${props.name.last}`}
+            </h3>
 
-        <p>{props.login.username}</p>
+            <span>{props.dob.age}</span>
+          </div>
 
-        <p>{props.email}</p>
+          <p>@{props.login.username}</p>
+
+          <p>{props.email}</p>
+          
+        </div>
 
       </div>
+{/* 
+      <div className={Styles.more_info}>
+
+
+      </div> */}
 
     </li>
   )
