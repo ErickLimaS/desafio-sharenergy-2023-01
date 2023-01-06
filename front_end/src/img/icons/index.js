@@ -10,4 +10,5 @@ export { default as Loading200Px } from "./Loading200Px";
 export { default as PeopleFill } from "./PeopleFill";
 export { default as PersonFill } from "./PersonFill";
 export { default as Plus } from "./Plus";
+export { default as Question } from "./Question";
 export { default as Search } from "./Search";
