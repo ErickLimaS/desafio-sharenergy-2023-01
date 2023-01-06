@@ -92,7 +92,7 @@ function Sidebar() {
                         <Code /> <span>Status Code Aleatório</span>
                     </Link></li>
                     <li><Link to='/random-dog-image'>
-                        <DogPaw id={Styles.resize} /> <span>Cachorro Aleatória</span>
+                        <DogPaw id={Styles.resize} /> <span>Cachorro Aleatório</span>
                     </Link></li>
                 </ul>
             </nav>

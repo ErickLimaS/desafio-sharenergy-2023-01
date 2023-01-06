@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from 'react'
 import Styles from './RandomStatusCode.module.css'
-import Loading from '../../img/icons/Loading200Px'
 import Search from '../../img/icons/Search'
 import Question from '../../img/icons/Question'
 import ImgNotFound from '../../img/not-found.png'
@@ -96,7 +95,7 @@ function RandomStatusCode() {
     <div className={Styles.container}>
       <h1>Status Code Aleatório</h1>
 
-      <p>Veja uma imagem diferente cada vez que selecionar um código diferente.</p>
+      <p>Veja uma imagem diferente cada vez que selecionar um código.</p>
 
       {/* <p>Em uma segunda página, o usuário deve ser capaz de selecionar um status code http qualquer, e, após a seleção, deve ser retornada uma imagem da api HTTP Cat relacionada ao status escolhido, caso não exista tal imagem, deve ser retornada uma imagem de not found à critério de escolha do participante do desafio; */}
 
@@ -164,19 +163,23 @@ function RandomStatusCode() {
           <h2>Imagem para o Código <b>{statusCodeInput ? statusCodeInput : (<span>...</span>)}</b></h2>
 
           {!loading && (
-
             statusCodeInput ? (
 
-              <img src={imgSrcBasedOnCodeStatus() || ImgNotFound}
-                alt={`Código de Status ${statusCodeInput}`}
+              <object data={imgSrcBasedOnCodeStatus()}
                 width='300px' height='auto'
+                type='image/jpg'
+                aria-label={`Código de Status ${statusCodeInput}`}
               >
-              </img>
+                <img src={ImgNotFound}
+                  alt='Imagem Não Disponível.'
+                  width='300px' height='auto'
+                >
+                </img>
+              </object>
+            ) : (
+              <span className={Styles.loading_background}></span>
             )
-              :
-              (
-                <span className={Styles.loading_background}></span>
-              )
+
           )}
 
         </div>

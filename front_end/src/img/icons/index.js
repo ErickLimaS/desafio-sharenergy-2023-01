@@ -1,4 +1,5 @@
 export { default as ArrowBarRight } from "./ArrowBarRight";
+export { default as ArrowClockwise } from "./ArrowClockwise";
 export { default as ChevronDown } from "./ChevronDown";
 export { default as ChevronUp } from "./ChevronUp";
 export { default as Code } from "./Code";
