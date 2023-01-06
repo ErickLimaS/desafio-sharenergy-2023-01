@@ -232,8 +232,9 @@ form#form_search>div p {
 .form_container #status_code_panel {
 
     position: absolute;
-    top: 72px;
+    bottom: 72px;
     right: 0;
+    left: 0;
 
     padding: 24px 16px;
 
@@ -245,6 +246,17 @@ form#form_search>div p {
 
 }
 
+@media(min-width: 460px) {
+
+    .form_container #status_code_panel {
+
+        top: 72px;
+        bottom: initial;
+        left: initial;
+
+    }
+
+}
 
 .form_container #status_code_panel h5 {
 
@@ -322,10 +334,18 @@ form#form_search>div p {
 
     animation: loading infinite 1400ms;
 
-    width: 320px;
+    width: 300px;
     height: 256px;
 
     border-radius: 8px;
+}
+
+@media(min-width: 360px) {
+    .result_container span.loading_background {
+
+        width: 320px;
+
+    }
 }
 
 @keyframes loading {
