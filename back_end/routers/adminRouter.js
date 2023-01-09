@@ -1,12 +1,12 @@
 import express from "express";
-import AdminAccount from "../models/adminAccount.js";
+import AdminAccount from "../models/adminModel.js";
 import bcrypt from 'bcrypt'
 import expressAsyncHandler from "express-async-handler";
 import { generateToken } from "../utils.js";
 
 const adminRouter = express.Router()
 
-const bcryptHash = 10
+const saltRounds = 10
 
 // creates account
 adminRouter.post('/register', expressAsyncHandler(async (req, res) => {
@@ -24,7 +24,7 @@ adminRouter.post('/register', expressAsyncHandler(async (req, res) => {
         }
 
         // hash the password
-        req.body.password = await bcrypt.hash(req.body.password, bcryptHash)
+        req.body.password = await bcrypt.hash(req.body.password, saltRounds)
 
         const newAdminAccount = new AdminAccount(req.body)
 
@@ -74,14 +74,12 @@ adminRouter.post('/login', expressAsyncHandler(async (req, res) => {
 
         }
 
-        return res.status(202)
-            .cookie('token', generateToken(), { maxAge: 900000, httpOnly: false })
-            .json({
+        return res.status(202).json({
                 success: true,
                 message: 'Login Accepted.',
                 account: {
                     username: account.username,
-                    token: generateToken()
+                    token: generateToken(account._id)
                 }
             })
     }

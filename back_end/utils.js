@@ -1,21 +1,56 @@
 import jwt from "jsonwebtoken";
-import cookieSession from 'cookie-session'
+import AdminAccount from "./models/adminModel.js";
 
-export function generateToken(userId) {
+// Generates a Token when user logs in
+export function generateToken(id) {
 
     return jwt.sign(
-        { userId },
-        'SEGREDOdoJWT',
+        { id },
+        process.env.JWTSECRET,
         { expiresIn: '6h' }
     )
 
 }
 
-// export function checkCookies(req, res, next) {
+// Checks if the client who made the request is authorized 
+export function isAuth(req, res, next) {
 
-//     req.cookies(cookieSession({
-//         name: 'token',
-//         keys: generateToken(req._id)
-//     }))
+    const authorization = req.headers.authorization;
 
-// }
+    if (!authorization) {
+
+        return res.status(401).json({
+            success: false,
+            message: 'Authorization Not Found.'
+        })
+
+    }
+
+    const token = authorization.slice(7, authorization.length)
+
+    jwt.verify(
+        token, process.env.JWTSECRET, async (error, decode) => {
+
+            if (error) {
+                return res.status(401).json(
+                    { success: false, message: 'Authorization Token Not Valid.' }
+                )
+            }
+
+            // Checks if the account is from a Admin
+            const isAdmin = await AdminAccount.findById(decode.id)
+
+            if (!isAdmin) {
+
+                return res.status(403).json(
+                    { success: false, message: 'Not allowed. You are not a administrator.' }
+                )
+
+            }
+
+            next()
+
+        }
+    )
+
+}

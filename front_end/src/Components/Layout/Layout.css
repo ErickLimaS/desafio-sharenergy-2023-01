@@ -74,6 +74,16 @@
 
 }
 
+
+#main_content > * {
+
+    padding: 8px;
+
+    min-width: inherit;
+    min-height: inherit;
+
+}
+
 @media(min-width: 720px) {
 
     #main_content {
