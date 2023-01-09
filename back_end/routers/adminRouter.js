@@ -50,16 +50,16 @@ adminRouter.post('/register', expressAsyncHandler(async (req, res) => {
 adminRouter.post('/login', expressAsyncHandler(async (req, res) => {
 
     try {
-        const account = await AdminAccount.findOne({ email: req.body.email })
+        const account = await AdminAccount.findOne({ username: req.body.username })
 
         // if Email doesnt exist on DB
         if (!account) {
 
-            return res.status(409).json({
+            return res.status(401).json({
                 success: false,
                 message: 'Something is wrong with either your email or password. Try again.'
-            })
 
+            })
         }
 
         const passwordIsCorrect = await bcrypt.compare(req.body.password, account.password)
@@ -67,25 +67,27 @@ adminRouter.post('/login', expressAsyncHandler(async (req, res) => {
         // if Password doesnt match
         if (!passwordIsCorrect) {
 
-            return res.status(409).json({
+            return res.status(401).json({
                 success: false,
                 message: 'Something is wrong with either your email or password. Try again.'
             })
 
         }
 
-        return res.status(202).json({
-            success: true,
-            message: 'Login Accepted.',
-            account: {
-                username: account.username,
-                token: generateToken()
-            }
-        })
+        return res.status(202)
+            .cookie('token', generateToken(), { maxAge: 900000, httpOnly: false })
+            .json({
+                success: true,
+                message: 'Login Accepted.',
+                account: {
+                    username: account.username,
+                    token: generateToken()
+                }
+            })
     }
     catch (error) {
 
-        return res.status(500).json({
+        return res.status(500).setHeader.json({
             success: false,
             message: `Internal Error. ${error}`
         })
