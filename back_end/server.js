@@ -5,6 +5,7 @@ import adminRouter from './routers/adminRouter.js';
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import customerRouter from './routers/customerRouter.js';
 
 dotenv.config()
 
@@ -23,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URL).then(
 )
 
 app.use('/admin', adminRouter)
-// app.use('/customer', customersRouter)
+app.use('/customer', customerRouter)
 
 app.listen(PORT, () => {
 
