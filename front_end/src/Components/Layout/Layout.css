@@ -68,7 +68,9 @@
 
     grid-area: main;
 
-    margin: 8px;
+    background-color: var(--white);
+
+    /* margin: 8px; */
 
 }
 
@@ -76,7 +78,7 @@
 
     #main_content {
 
-        /* margin: 16px; */
+        margin: 0;
         margin: 16px auto;
 
     }

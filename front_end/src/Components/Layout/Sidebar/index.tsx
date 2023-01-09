@@ -8,16 +8,19 @@ import Code from '../../../img/icons/Code'
 import PeopleFill from '../../../img/icons/PeopleFill'
 import ChevronUp from '../../../img/icons/ChevronUp'
 import HouseFill from '../../../img/icons/HouseFill'
+import { useAppSelector } from '../../../redux/hooks'
 
 function Sidebar() {
 
     // reduce size of the sidebar
     const [shrink, setShrink] = useState<boolean | null>(null)
 
-    // on mobile screen, menu will be always closed
+    const user: any = useAppSelector((state) => state.adminUser)
+
+    // On mobile screen and if user is not logged in, menu will be closed.
     useLayoutEffect(() => {
 
-        if (window.screen.width < 720) {
+        if (window.screen.width < 720 || (!user.username && !user.token)) {
             setShrink(true)
         }
 
@@ -26,7 +29,9 @@ function Sidebar() {
     return (
         <div id='sidebar' data-shrink-sidebar={shrink} className={Styles.container}>
 
-            <div className={Styles.nav_heading}>
+            <div className={Styles.nav_heading}
+                data-user-logged-in={user.username && user.token ? true : false}
+            >
                 <h6>Navegação</h6>
 
                 <button type='button'

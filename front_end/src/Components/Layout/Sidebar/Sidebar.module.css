@@ -14,6 +14,17 @@
 
 }
 
+.container .nav_heading[data-user-logged-in=false]>* {
+
+    opacity: 0;
+
+}
+
+.container .nav_heading[data-user-logged-in=false]>button {
+
+    display: none;
+
+}
 
 .container .nav_heading h6 {
 
