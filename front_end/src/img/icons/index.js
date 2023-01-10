@@ -1,3 +1,4 @@
+export { default as AddUser } from "./AddUser";
 export { default as ArrowBarRight } from "./ArrowBarRight";
 export { default as ArrowClockwise } from "./ArrowClockwise";
 export { default as ChevronDown } from "./ChevronDown";
@@ -12,4 +13,7 @@ export { default as PeopleFill } from "./PeopleFill";
 export { default as PersonFill } from "./PersonFill";
 export { default as Plus } from "./Plus";
 export { default as Question } from "./Question";
+export { default as RemoveUser } from "./RemoveUser";
 export { default as Search } from "./Search";
+export { default as Synchronize } from "./Synchronize";
+export { default as Update } from "./Update";
