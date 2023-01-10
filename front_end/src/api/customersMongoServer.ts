@@ -8,16 +8,17 @@ interface customerTypes {
         last: string
     },
     email: string,
-    password: string,
-    tel: string[],
+    tel: {
+        ddd: string,
+        tel: string
+    },
     cpf: string
 }
 
 const URL = 'http://localhost:8000/customer'
 
-const adminAccount: any = store.getState()
-
-console.log(adminAccount)
+const storeState: any = store.getState()
+const { adminUser } = storeState
 
 // configutarion for requests
 const reqConfig = (route?: string, body?: customerTypes, customerId?: string) => {
@@ -47,7 +48,7 @@ const reqConfig = (route?: string, body?: customerTypes, customerId?: string) =>
         // withCredentials: true,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${adminAccount.token}`
+            'Authorization': `Bearer ${adminUser.token}`
         },
         data: body,
         url: `${URL}${route}${customerId ? customerId : ''}`

@@ -1,12 +1,9 @@
 import express from "express"
-import bcrypt from 'bcrypt'
 import expressAsyncHandler from "express-async-handler"
 import Customer from '../models/customerModel.js'
 import { isAuth } from "../utils.js"
 
 const customerRouter = express.Router()
-
-const saltRounds = 10
 
 // Gets all customers and send to client
 customerRouter.get('/all', expressAsyncHandler(async (req, res) => {
@@ -46,8 +43,6 @@ customerRouter.post('/register', isAuth, expressAsyncHandler(async (req, res) =>
             })
 
         }
-
-        req.body.password = await bcrypt.hash(req.body.password, saltRounds)
 
         const newCustomer = new Customer(req.body)
 
