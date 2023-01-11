@@ -17,6 +17,10 @@
   --white-10: hsla(0, 0%, 100%, 0.10);
   --white-5: hsla(0, 0%, 100%, 0.05);
 
+  --success: #41ad49;
+  --warning: #f2c200;
+  --error: #bf3333;
+
   /* FS = 16px -> 20px, 1.2 TS -> 1.333 TS */
   --fs-minus-2: clamp(0.69rem, calc(0.69rem + 0.01vw), 0.70rem);
   --fs-minus-1: clamp(0.83rem, calc(0.80rem + 0.15vw), 0.94rem);
@@ -49,7 +53,7 @@ h1, h2, h3, h4, h5, h6, p, input, small, li {
   color: var(--black);
 }
 
-button{
+button {
   cursor: pointer;
 }
 
