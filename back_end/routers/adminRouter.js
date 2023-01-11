@@ -85,7 +85,7 @@ adminRouter.post('/login', expressAsyncHandler(async (req, res) => {
     }
     catch (error) {
 
-        return res.status(500).setHeader.json({
+        return res.status(500).json({
             success: false,
             message: `Internal Error. ${error}`
         })
