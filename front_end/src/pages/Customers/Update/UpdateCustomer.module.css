@@ -1,0 +1,198 @@
+.container {
+
+    margin: 32px 0;
+
+}
+
+.container[data-loading=true] {
+
+    display: flex;
+    align-items: center;
+
+}
+
+@media(min-width: 720px) {
+
+    .container {
+
+        border-radius: 8px;
+
+    }
+}
+
+.container>h1 {
+
+    margin: 16px;
+
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    color: var(--black-50);
+
+    border-bottom: 4px solid var(--secondary);
+    width: fit-content;
+
+}
+
+.container>h1 span {
+
+    color: var(--secondary);
+
+}
+
+.container>p {
+
+    margin-left: 16px;
+    margin-bottom: 16px;
+
+    max-width: 600px;
+
+}
+
+.container>a {
+
+    padding: 8px;
+
+    color: red;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+}
+
+
+.container>a:hover {
+
+    border: 1px solid red;
+
+}
+
+@media(max-width: 719px) {
+    .form_container {
+
+        max-width: 480px;
+
+        margin: auto;
+
+        padding: 16px;
+
+    }
+}
+
+@media(min-width: 720px) {
+
+    .form_container {
+
+        margin: 16px 0;
+
+        padding: 16px;
+
+    }
+
+}
+
+
+.form_container input {
+
+    padding: 12px 8px;
+
+    border: 2px solid var(--black-25);
+    border-radius: 4px;
+
+}
+
+.form_container button[type='submit'] {
+
+    margin-top: 16px;
+
+    width: 100%;
+
+    padding: 16px 0;
+
+    background-image: linear-gradient(to right, var(--secondary) 0%, var(--primary) 100%);
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: var(--fs-minus-1);
+    color: var(--white);
+
+}
+
+.form_container button[type='submit']:hover {
+
+    background-image: linear-gradient(to left, var(--secondary) 0%, var(--primary) 100%);
+
+}
+
+.flex_row {
+
+    gap: 0 8px;
+
+}
+
+@media(min-width: 720px) {
+    .flex_row {
+
+        display: flex;
+        flex-direction: row;
+
+    }
+}
+
+
+.flex_row.tel_container {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex_row div:last-child {
+    width: 100%;
+}
+
+
+@media(min-width: 720px) {
+    .flex_row.name_container div:first-child input {
+
+        width: 240px;
+
+    }
+}
+
+.flex_row.tel_container div:first-child input {
+
+    width: 40px;
+
+}
+
+@media(min-width: 720px) {
+    .flex_row.tel_container div:first-child input {
+
+        width: 80px;
+
+    }
+}
+
+.flex_column {
+
+    margin: 8px 0;
+
+}
+
+.flex_column>label {
+
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 500;
+    color: var(--black);
+
+}
+
+.flex_column small {
+
+    font-size: var(--fs-minus-1);
+    font-weight: 500;
+    color: var(--black-75);
+
+}

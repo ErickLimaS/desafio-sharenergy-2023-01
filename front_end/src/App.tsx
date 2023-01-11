@@ -10,6 +10,7 @@ import Customers from './pages/Customers';
 import Register from './pages/Customers/Register';
 import Update from './pages/Customers/Update';
 import Delete from './pages/Customers/Delete';
+import UpdateCustomer from './pages/Customers/Update/[id]';
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
           <Route path='/random-dog-image' element={<RandomDogImage />} />
           <Route path='/customers/delete' element={<Delete />} />
           <Route path='/customers/update' element={<Update />} />
+          <Route path='/customers/update/:id' element={<UpdateCustomer />} />
           <Route path='/customers/register' element={<Register />} />
+          <Route path='/customers/register/:id' element={<Register />} />
           <Route path='/customers' element={<Customers />} />
           <Route path='/' element={<Home />} />
           <Route path='*' element={(<h1>Essa página não existe.</h1>)} />
