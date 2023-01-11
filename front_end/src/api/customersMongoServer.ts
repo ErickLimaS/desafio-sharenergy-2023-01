@@ -1,18 +1,25 @@
 import Axios from "axios";
-import { useAppSelector } from "../redux/hooks";
 import { store } from "../store";
 
-interface customerTypes {
+export interface customerTypes {
     name: {
         first: string,
         last: string
     },
+    address: {
+        street: string,
+        county: string,
+        state: string,
+        country: string
+    }
     email: string,
-    tel: {
+    tel: [{
         ddd: string,
         tel: string
-    },
-    cpf: string
+    }],
+    cpf: string,
+    _id?: string,
+    createdAt?: Date
 }
 
 const URL = 'http://localhost:8000/customer'
@@ -20,7 +27,7 @@ const URL = 'http://localhost:8000/customer'
 const storeState: any = store.getState()
 const { adminUser } = storeState
 
-// configutarion for requests
+// configurarion for requests
 const reqConfig = (route?: string, body?: customerTypes, customerId?: string) => {
 
     let methodByRoute: string = ''
@@ -56,11 +63,11 @@ const reqConfig = (route?: string, body?: customerTypes, customerId?: string) =>
 
 }
 
-export async function getAllCustomers() {
+export async function getAllCustomers(query?: string) {
 
     try {
 
-        const { data } = await Axios(reqConfig('/all'))
+        const { data } = await Axios(reqConfig(`/all${query ? query : ''}`))
 
         return data
 
@@ -106,7 +113,6 @@ export async function updateCustomer(customerId: string, bodyInfo: customerTypes
     }
 
 }
-
 
 export async function deleteCustomer(customerId: string) {
 

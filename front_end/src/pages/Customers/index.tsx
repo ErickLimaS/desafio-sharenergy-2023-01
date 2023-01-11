@@ -1,30 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './Customers.module.css'
-import { getAllCustomers } from '../../api/customersMongoServer'
+import { customerTypes, getAllCustomers } from '../../api/customersMongoServer'
 import { Link } from 'react-router-dom'
 import Update from '../../img/icons/Update'
 import AddUser from '../../img/icons/AddUser'
 import RemoveUser from '../../img/icons/RemoveUser'
 import CustomerResult from '../../Components/CustomerResult'
-
-interface customerTypes {
-    name: {
-        first: string,
-        last: string
-    },
-    address: {
-        street: string,
-        county: string,
-        state: string,
-        country: string
-    }
-    email: string,
-    password: string,
-    tel: string[],
-    cpf: string,
-    _id: string,
-    createdAt: Date
-}
 
 function Customers() {
 

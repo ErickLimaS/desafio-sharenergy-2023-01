@@ -5,12 +5,26 @@ import { isAuth } from "../utils.js"
 
 const customerRouter = express.Router()
 
-// Gets all customers and send to client
+// Gets all or queried customers and send back to client
 customerRouter.get('/all', expressAsyncHandler(async (req, res) => {
 
     try {
 
-        const customers = await Customer.find()
+        // If its queried for First Name, Email or CPF, it will return the exact Customer or some suggestions
+        const customers = await Customer.find(
+            req.query.last_name && {
+                "name.last": { "$regex": `${req.query.last_name}`, "$options": "i" }
+            } ||
+            req.query.email && {
+                "email": { "$regex": `${req.query.email}`, "$options": "i" }
+            } ||
+            req.query.cpf && {
+                "cpf": { "$regex": `${req.query.cpf}`, "$options": "i" }
+            } ||
+            req.query.id && {
+                "_id": `${req.query.id}`
+            }
+        )
 
         return res.status(200).json({
             success: true,

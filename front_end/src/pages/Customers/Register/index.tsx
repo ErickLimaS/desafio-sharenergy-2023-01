@@ -93,9 +93,15 @@ function Register() {
         last: lastNameInput.current!.value
       },
       email: emailInput.current!.value,
-      tel: {
+      tel: [{
         ddd: dddTelInput.current!.value,
         tel: telInput.current!.value,
+      }],
+      address: {
+        street: streetInput.current!.value,
+        county: countryInput.current!.value,
+        state: stateInput.current!.value,
+        country: countryInput.current!.value
       },
       cpf: cpfInput.current!.value
     })
