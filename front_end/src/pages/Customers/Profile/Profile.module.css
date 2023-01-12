@@ -1,0 +1,182 @@
+.container {
+
+    margin: 16px 0;
+
+}
+
+@media((min-width: 720px) and (max-width: 979px)) {
+    .container {
+
+        width: 70vw;
+
+    }
+}
+
+@media((min-width: 980px) and (max-width: 1439px)) {
+    .container {
+
+        width: 50vw;
+
+    }
+}
+
+@media(min-width:1440px) {
+    .container {
+
+        width: 40vw;
+
+    }
+}
+
+.container[data-loading=true] {
+
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.container>h1 {
+
+    margin: 16px;
+
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    color: var(--black-50);
+
+    border-bottom: 4px solid var(--secondary);
+    width: fit-content;
+
+}
+
+.container>h1 span {
+
+    color: var(--secondary);
+
+}
+
+.container>button[role='link'] {
+
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: transparent;
+
+    color: red;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: var(--fs-p);
+
+}
+
+
+.container>button[role='link']:hover {
+
+    border: 1px solid red;
+
+}
+
+.container #links_container {
+
+    margin: 0 16px;
+    margin-top: 32px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+
+}
+
+@media(min-width: 500px) {
+
+    .container #links_container {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+#links_container a {
+
+    padding: 16px 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid var(--secondary);
+    background-color: var(--white);
+    border-radius: 8px;
+
+    color: var(--black-75);
+
+}
+
+@media(min-width: 720px) {
+
+    #links_container a {
+
+        padding: 24px 16px;
+
+    }
+}
+
+#links_container a:hover {
+
+    transition: all ease 200ms;
+
+    color: var(--black);
+
+    box-shadow: 3px 3px 2px 2px var(--black-25);
+
+}
+
+#links_container a svg {
+
+    margin: 0 8px;
+
+    width: 40px;
+    height: 40px;
+
+}
+
+
+#links_container a svg {
+
+    margin: 0 8px;
+
+    width: 40px;
+    height: 40px;
+
+}
+
+@media(min-width: 680px) {
+
+    #links_container a svg {
+
+        margin: 0;
+        margin-right: 8px;
+
+    }
+}
+
+
+#links_container a[data-update] svg {
+
+    width: 30px;
+    height: 30px;
+
+    fill: #f0dd48;
+
+}
+
+#links_container a[data-delete] svg {
+
+    fill: #bf3333;
+
+}

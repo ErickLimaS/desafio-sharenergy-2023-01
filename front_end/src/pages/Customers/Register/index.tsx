@@ -115,9 +115,9 @@ function Register() {
 
     <div className={Styles.container}>
 
-      <Link to='/customers'>
+      <button role='link' type='button' onClick={() => navigate(-1)}>
         <ArrowUp style={{ transform: 'rotate(270deg)', marginRight: '8px' }} /> Voltar
-      </Link>
+      </button>
 
       <h1>Cadastrar Cliente</h1>
 
