@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Styles from './Update.module.css'
 import Search from '../../../img/icons/Search'
 import { customerTypes, getAllCustomers } from '../../../api/customersMongoServer'
-import CustomerResult from '../../../Components/CustomerResult'
+import CustomerResult from '../../../Components/Customers/CustomerResult'
 
 function Update() {
 

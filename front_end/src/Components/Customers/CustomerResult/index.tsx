@@ -1,8 +1,8 @@
 import React from 'react'
 import Styles from './CustomerResult.module.css'
 import { Link } from 'react-router-dom'
-import convertDate from '../convertDate'
-import { customerTypes } from '../../api/customersMongoServer'
+import convertDate from '../../convertDate'
+import { customerTypes } from '../../../api/customersMongoServer'
 
 function CustomerResult({ props }: { props: customerTypes }) {
 
