@@ -1,28 +1,7 @@
 import React from 'react'
 import Styles from './UserSearchResult.module.css'
 
-interface UserTypes {
-
-  email: string,
-  picture: {
-    medium: string,
-    thumbnail: string
-  },
-  name: {
-    title: string,
-    first: string,
-    last: string
-  },
-  login: {
-    username: string
-  },
-  dob: {
-    age: number
-  }
-
-}
-
-function UserSearchResult({ props }: { props: UserTypes }) {
+function UserSearchResult({ props }: { props: UserGenTypes }) {
 
   return (
     <li className={Styles.container}>

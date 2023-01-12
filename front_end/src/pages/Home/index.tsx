@@ -7,32 +7,10 @@ import Search from '../../img/icons/Search'
 import Plus from '../../img/icons/Plus'
 import UserSearchResult from '../../Components/Home/UserSearchResult'
 
-interface UserTypes {
-
-  email: string,
-  picture: {
-    medium: string,
-    thumbnail: string
-  },
-  name: {
-    title: string,
-    first: string,
-    last: string
-  },
-  login: {
-    username: string,
-    sha256: string
-  },
-  dob: {
-    age: number
-  }
-
-}
-
 function Home() {
 
   const [users, setUsers] = useState<any>()
-  const [searchResults, setSearchResults] = useState<UserTypes[] | any>([])
+  const [searchResults, setSearchResults] = useState<UserGenTypes[] | any>([])
   const [loading, setLoading] = useState<boolean>(false)
 
   const searchInput = React.useRef<HTMLInputElement>(null)
@@ -55,7 +33,7 @@ function Home() {
 
     }
 
-    res.forEach((item: UserTypes) => {
+    res.forEach((item: UserGenTypes) => {
       setUsers((curr: any) => [...curr, item])
     })
 
@@ -90,7 +68,7 @@ function Home() {
     const searchedItem: string = searchInput.current!.value.toLowerCase()
 
     // Filters results on Users State, then returns the User 
-    users.forEach((user: UserTypes) => {
+    users.forEach((user: UserGenTypes) => {
 
       // Lower case and slice all values to be filtered even more, getting closer to the desirable result when its been typed on input
       const userFirstName: string = user.name.first.toLowerCase().slice(0, searchedItem.length)
@@ -98,7 +76,7 @@ function Home() {
       const userUsername: string = user.login.username.toLowerCase().slice(0, searchedItem.length)
 
       // filters which user was already added to Results State. If true, wont be added.
-      function isUserAlreadyOnResults(currentUserToBeInserted: UserTypes) {
+      function isUserAlreadyOnResults(currentUserToBeInserted: UserGenTypes) {
 
         if (searchResults.length === 0) {
 
@@ -106,7 +84,7 @@ function Home() {
 
         }
 
-        const isDoubled = searchResults.every((userOnResults: UserTypes) => {
+        const isDoubled = searchResults.every((userOnResults: UserGenTypes) => {
           if (currentUserToBeInserted.email === userOnResults.email) {
 
             console.log(currentUserToBeInserted.email, userOnResults.email)
@@ -124,10 +102,6 @@ function Home() {
 
       // checks if the input value is equal with the first name
       if (searchedItem === userFirstName) {
-
-        // console.log(user.name.first)
-
-        // console.log(isUserAlreadyOnResults(user))
 
         switch (isUserAlreadyOnResults(user)) {
 
@@ -259,7 +233,7 @@ function Home() {
 
           <ul>
 
-            {searchResults.map((item: UserTypes, key: number) => (
+            {searchResults.map((item: UserGenTypes, key: number) => (
               <UserSearchResult key={key} props={item} />
             ))}
 
@@ -272,7 +246,7 @@ function Home() {
 
         {users && (
           <ul>
-            {users.map((item: UserTypes) => (
+            {users.map((item: UserGenTypes) => (
               <User key={item.login.sha256} props={item} />
             ))}
           </ul>

@@ -1,8 +1,7 @@
 import React from 'react'
-import { customerTypes } from '../../../api/customersMongoServer'
 import Styles from './CustomerProfile.module.css'
 
-function CustomerProfile({ props }: { props: customerTypes }) {
+function CustomerProfile({ props }: { props: CustomerTypes }) {
 
     return (
         <ul className={Styles.container}>

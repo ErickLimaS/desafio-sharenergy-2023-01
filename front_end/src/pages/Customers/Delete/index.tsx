@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Styles from './Delete.module.css'
 import Search from '../../../img/icons/Search'
-import { customerTypes, getAllCustomers } from '../../../api/customersMongoServer'
+import { getAllCustomers } from '../../../api/customersMongoServer'
 import CustomerResult from '../../../Components/Customers/CustomerResult'
 
 function Delete() {
@@ -9,7 +9,7 @@ function Delete() {
   const searchInput = React.useRef<HTMLInputElement>(null)
   const queryRadioInput = React.useRef<HTMLInputElement>(null)
 
-  const [customersFromServer, setCustomersFromServer] = useState<customerTypes[]>([])
+  const [customersFromServer, setCustomersFromServer] = useState<CustomerTypes[]>([])
 
   async function handleSearchForm(e: React.FormEvent) {
 
@@ -87,7 +87,7 @@ function Delete() {
           <h2>Selecione o cliente a ser deletado</h2>
 
           <ul className={Styles.search_results_container}>
-            {customersFromServer.map((item: customerTypes) => (
+            {customersFromServer.map((item: CustomerTypes) => (
               <CustomerResult key={item._id} props={item} />
             ))}
           </ul>
