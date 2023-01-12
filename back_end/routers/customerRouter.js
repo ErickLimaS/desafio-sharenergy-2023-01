@@ -6,7 +6,7 @@ import { isAuth } from "../utils.js"
 const customerRouter = express.Router()
 
 // Gets all or queried customers and send back to client
-customerRouter.get('/all', expressAsyncHandler(async (req, res) => {
+customerRouter.get('/all', isAuth, expressAsyncHandler(async (req, res) => {
 
     try {
 
