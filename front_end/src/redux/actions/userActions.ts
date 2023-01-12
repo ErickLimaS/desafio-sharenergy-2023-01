@@ -3,11 +3,6 @@ import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT_FA
 import { loginAdminUser } from "../../api/userMongoServer"
 import { AnyAction } from "redux"
 
-interface UserLoginTypes {
-    username: string,
-    password: string
-}
-
 interface serverResponseTypes {
     success: boolean,
     user?: {

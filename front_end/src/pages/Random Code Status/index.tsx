@@ -63,7 +63,7 @@ function RandomStatusCode() {
               >
                 <option disabled>Escolha aqui o código do status que deseja ver...</option>
 
-                {statusCodes.map((item: { code: string, message: string }): any => (
+                {statusCodes.map((item: { code: string, message: string }) => (
                   <option value={item.code} key={item.code}>{item.code} - {item.message}</option>
                 ))}
 
