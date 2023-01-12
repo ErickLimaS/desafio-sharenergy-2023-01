@@ -57,7 +57,7 @@ function UpdateCustomer() {
     if (res.success) {
       return Swal.fire({
         title: 'Tudo Certo!',
-        text: `${res.message || 'O cliente foi cadastrado com sucesso.'}`,
+        text: `${res.message || 'O cliente foi atualizado com sucesso.'}`,
         icon: 'success',
         confirmButtonColor: 'var(--success)',
         confirmButtonText: 'Voltar para página Clientes',

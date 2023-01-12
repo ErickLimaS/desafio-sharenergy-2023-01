@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Update from '../../img/icons/Update'
 import AddUser from '../../img/icons/AddUser'
 import RemoveUser from '../../img/icons/RemoveUser'
-import CustomerResult from '../../Components/CustomerResult'
+import CustomerResult from '../../Components/Customers/CustomerResult'
 
 function Customers() {
 
