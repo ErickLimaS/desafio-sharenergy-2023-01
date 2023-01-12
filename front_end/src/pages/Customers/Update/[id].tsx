@@ -143,9 +143,9 @@ function UpdateCustomer() {
 
       {customer ? (
         <>
-          <Link to='/customers'>
+          <button role='link' type='button' onClick={() => navigate(-1)}>
             <ArrowUp style={{ transform: 'rotate(270deg)', marginRight: '8px' }} /> Voltar
-          </Link>
+          </button>
 
           <h1>Atualizar <span>{customer!.name.first} {customer!.name.last}</span></h1>
 

@@ -12,6 +12,7 @@ import Update from './pages/Customers/Update';
 import Delete from './pages/Customers/Delete';
 import UpdateCustomer from './pages/Customers/Update/[id]';
 import DeleteCustomer from './pages/Customers/Delete/[id]';
+import Profile from './pages/Customers/Profile';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/customers/update/:id' element={<UpdateCustomer />} />
           <Route path='/customers/update' element={<Update />} />
           <Route path='/customers/register' element={<Register />} />
+          <Route path='/customers/:id' element={<Profile />} />
           <Route path='/customers' element={<Customers />} />
           <Route path='/' element={<Home />} />
           <Route path='*' element={(<h1>Essa página não existe.</h1>)} />
