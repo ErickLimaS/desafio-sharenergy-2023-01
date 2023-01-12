@@ -1,6 +1,5 @@
 import Axios from "axios"
 
-// const URL = `https://randomuser.me/api/?results=${qtyResults}`
 const URL = `https://randomuser.me/api/`
 
 // configutarion for requests

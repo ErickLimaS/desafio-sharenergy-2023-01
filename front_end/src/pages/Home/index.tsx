@@ -9,8 +9,8 @@ import UserSearchResult from '../../Components/Home/UserSearchResult'
 
 function Home() {
 
-  const [users, setUsers] = useState<any>()
-  const [searchResults, setSearchResults] = useState<UserGenTypes[] | any>([])
+  const [users, setUsers] = useState<UserGenTypes[]>([])
+  const [searchResults, setSearchResults] = useState<UserGenTypes[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
   const searchInput = React.useRef<HTMLInputElement>(null)
@@ -21,11 +21,12 @@ function Home() {
   async function fetchUsersOnHomePage(pagination: number) {
 
     setLoading(true)
-    const res: any = await getUsers(pagination)
+    const res: Partial<UserGenTypes> = await getUsers(pagination)
 
     if (!users) {
 
-      setUsers(res)
+      setUsers(res as any)
+      setSearchResults(res as any)
 
       setLoading(false)
 
@@ -33,8 +34,9 @@ function Home() {
 
     }
 
-    res.forEach((item: UserGenTypes) => {
-      setUsers((curr: any) => [...curr, item])
+    (res as UserGenTypes[]).forEach((item: UserGenTypes) => {
+      setUsers((curr: UserGenTypes[]) => [...curr, item])
+      setSearchResults((curr: UserGenTypes[]) => [...curr, item])
     })
 
     setLoading(false)
@@ -59,131 +61,33 @@ function Home() {
     // resets Results State if input is empty
     if (searchInput.current!.value === '') {
 
-      setSearchResults([])
+      setSearchResults(users)
 
       return
 
     }
 
-    const searchedItem: string = searchInput.current!.value.toLowerCase()
+    setSearchResults((curr: UserGenTypes[]) => {
+      return curr.filter((item: UserGenTypes) => {
 
-    // Filters results on Users State, then returns the User 
-    users.forEach((user: UserGenTypes) => {
+        const input = searchInput.current!.value.toLowerCase()
 
-      // Lower case and slice all values to be filtered even more, getting closer to the desirable result when its been typed on input
-      const userFirstName: string = user.name.first.toLowerCase().slice(0, searchedItem.length)
-      const userEmail: string = user.email.toLowerCase().slice(0, searchedItem.length)
-      const userUsername: string = user.login.username.toLowerCase().slice(0, searchedItem.length)
+        const name = `${item.name.first.toLowerCase()} ${item.name.last.toLowerCase()}`
+        const email = item.email.toLowerCase().slice(0, input.length)
+        const username = item.login.username.toLowerCase().slice(0, input.length)
 
-      // filters which user was already added to Results State. If true, wont be added.
-      function isUserAlreadyOnResults(currentUserToBeInserted: UserGenTypes) {
-
-        if (searchResults.length === 0) {
-
-          return false
-
+        if (name.includes(input)) {
+          return item
         }
-
-        const isDoubled = searchResults.every((userOnResults: UserGenTypes) => {
-          if (currentUserToBeInserted.email === userOnResults.email) {
-
-            console.log(currentUserToBeInserted.email, userOnResults.email)
-
-            return true
-
-          }
-
-          return false
-        })
-
-        return isDoubled
-
-      }
-
-      // checks if the input value is equal with the first name
-      if (searchedItem === userFirstName) {
-
-        switch (isUserAlreadyOnResults(user)) {
-
-          case true:
-
-            return
-
-          case false:
-
-            setSearchResults((curr: any) => [...curr, user])
-
-            return
-
-          default:
-
-            setSearchResults(user)
-
-            return
-
+        else if (email.includes(input)) {
+          return item
         }
-
-      }
-
-      // checks if the input value is equal with the email
-      else if (searchedItem === userEmail) {
-
-        // console.log(user.name.first)
-
-        // console.log(isUserAlreadyOnResults(user))
-
-        switch (isUserAlreadyOnResults(user)) {
-
-          case true:
-
-            return
-
-          case false:
-
-            setSearchResults((curr: any) => [...curr, user])
-
-            return
-
-          default:
-
-            setSearchResults(user)
-
-            return
-
+        else if (username.includes(input)) {
+          return item
         }
+        return null
 
-      }
-
-      // checks if the input value is equal with the username
-      else if (searchedItem === userUsername) {
-
-        // console.log(user.name.first)
-
-        // console.log(isUserAlreadyOnResults(user))
-
-        switch (isUserAlreadyOnResults(user)) {
-
-          case true:
-
-            return
-
-          case false:
-
-            setSearchResults((curr: any) => [...curr, user])
-
-            return
-
-          default:
-
-            setSearchResults(user)
-
-            return
-
-
-        }
-
-      }
-
+      })
     })
 
   }
@@ -228,7 +132,8 @@ function Home() {
 
       </form>
 
-      {searchResults.length > 0 && (
+      {((searchResults.length !== users.length) && (searchResults.length > 0)) && (
+
         <div id='search_results' className={Styles.search_results_container} aria-haspopup={searchResults.length > 0 ? true : false}>
 
           <ul>
@@ -239,6 +144,7 @@ function Home() {
 
           </ul>
         </div>
+
       )}
 
       <div className={Styles.users_container}>

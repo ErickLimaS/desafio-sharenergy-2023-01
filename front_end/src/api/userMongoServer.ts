@@ -1,10 +1,5 @@
 import Axios from "axios";
 
-interface UserLoginTypes {
-    username: string,
-    password: string
-}
-
 const URL = 'http://localhost:8000/admin'
 
 // configutarion for requests
