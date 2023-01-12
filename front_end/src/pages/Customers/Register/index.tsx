@@ -1,6 +1,6 @@
 import React from 'react'
 import Styles from './Register.module.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ArrowUp from '../../../img/icons/ChevronUp'
 import { registerNewCustomer } from '../../../api/customersMongoServer'
 import Swal from 'sweetalert2'

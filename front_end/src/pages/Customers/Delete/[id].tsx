@@ -1,10 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react'
 import Styles from './DeleteCustomer.module.css'
-import { customerTypes, deleteCustomer, getAllCustomers } from '../../../api/customersMongoServer'
+import { deleteCustomer, getAllCustomers } from '../../../api/customersMongoServer'
 import { Params, useNavigate, useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import ArrowUp from '../../../img/icons/ChevronUp'
-import { Link } from 'react-router-dom'
 import Loading from '../../../img/icons/Loading200Px'
 import CustomerProfile from '../../../Components/Customers/CustomerProfile'
 
@@ -13,7 +12,7 @@ function DeleteCustomer() {
   // gets the Customer ID from URL
   const { id }: Readonly<Params<string>> = useParams()
 
-  const [customer, setCustomer] = useState<customerTypes>()
+  const [customer, setCustomer] = useState<CustomerTypes>()
 
   const navigate = useNavigate()
 

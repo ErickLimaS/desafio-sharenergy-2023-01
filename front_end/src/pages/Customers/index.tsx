@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './Customers.module.css'
-import { customerTypes, getAllCustomers } from '../../api/customersMongoServer'
+import { getAllCustomers } from '../../api/customersMongoServer'
 import { Link } from 'react-router-dom'
 import Update from '../../img/icons/Update'
 import AddUser from '../../img/icons/AddUser'
@@ -9,7 +9,7 @@ import CustomerResult from '../../Components/Customers/CustomerResult'
 
 function Customers() {
 
-    const [customers, setCustomers] = useState<customerTypes[]>([])
+    const [customers, setCustomers] = useState<CustomerTypes[]>([])
 
     async function fetchCustomers() {
 
@@ -60,7 +60,7 @@ function Customers() {
                     <ul>
 
                         {customers.length > 0 && (
-                            customers.map((customer: customerTypes) => (
+                            customers.map((customer: CustomerTypes) => (
                                 <CustomerResult props={customer} key={customer._id} />
                             ))
                         )}

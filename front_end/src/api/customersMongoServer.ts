@@ -1,34 +1,13 @@
 import Axios from "axios";
 import { store } from "../store";
 
-export interface customerTypes {
-    name: {
-        first: string,
-        last: string
-    },
-    address: {
-        street: string,
-        county: string,
-        state: string,
-        country: string
-    }
-    email: string,
-    tel: [{
-        ddd: string,
-        tel: string
-    }],
-    cpf: string,
-    _id?: string,
-    createdAt?: Date
-}
-
 const URL = 'http://localhost:8000/customer'
 
 const storeState: any = store.getState()
 const { adminUser } = storeState
 
 // configurarion for requests
-const reqConfig = (route?: string, body?: customerTypes, customerId?: string) => {
+const reqConfig = (route?: string, body?: CustomerTypes, customerId?: string) => {
 
     let methodByRoute: string = ''
 
@@ -80,7 +59,7 @@ export async function getAllCustomers(query?: string) {
 
 }
 
-export async function registerNewCustomer(bodyInfo: customerTypes) {
+export async function registerNewCustomer(bodyInfo: CustomerTypes) {
 
     try {
 
@@ -97,7 +76,7 @@ export async function registerNewCustomer(bodyInfo: customerTypes) {
 
 }
 
-export async function updateCustomer(customerId: string, bodyInfo: customerTypes) {
+export async function updateCustomer(customerId: string, bodyInfo: CustomerTypes) {
 
     try {
 

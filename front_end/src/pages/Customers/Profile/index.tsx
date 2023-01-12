@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import Styles from './Profile.module.css'
 import { Params, useNavigate, useParams } from 'react-router'
-import { customerTypes, getAllCustomers } from '../../../api/customersMongoServer'
+import { getAllCustomers } from '../../../api/customersMongoServer'
 import Loading from '../../../img/icons/Loading200Px'
 import ArrowUp from '../../../img/icons/ChevronUp'
 import Update from '../../../img/icons/Update'
@@ -13,7 +13,7 @@ function Profile() {
 
     const { id }: Readonly<Params<string>> = useParams()
 
-    const [customer, setCustomer] = useState<customerTypes>()
+    const [customer, setCustomer] = useState<CustomerTypes>()
 
     const navigate = useNavigate()
 

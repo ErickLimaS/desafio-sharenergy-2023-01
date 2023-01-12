@@ -1,27 +1,7 @@
 import React from 'react'
 import Styles from './User.module.css'
 
-interface UserTypes {
-
-    email: string,
-    picture: {
-        medium: string
-    },
-    name: {
-        title: string,
-        first: string,
-        last: string
-    },
-    login: {
-        username: string
-    },
-    dob: {
-        age: number
-    }
-
-}
-
-function User({ props }: { props: UserTypes }) {
+function User({ props }: { props: UserGenTypes }) {
 
     return (
 

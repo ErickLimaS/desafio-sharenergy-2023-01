@@ -1,10 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react'
 import Styles from './UpdateCustomer.module.css'
-import { customerTypes, getAllCustomers, updateCustomer } from '../../../api/customersMongoServer'
+import { getAllCustomers, updateCustomer } from '../../../api/customersMongoServer'
 import { Params, useNavigate, useParams } from 'react-router'
 import Swal from 'sweetalert2'
 import ArrowUp from '../../../img/icons/ChevronUp'
-import { Link } from 'react-router-dom'
 import Loading from '../../../img/icons/Loading200Px'
 
 function UpdateCustomer() {
@@ -23,7 +22,7 @@ function UpdateCustomer() {
   const stateInput = React.useRef<HTMLInputElement>(null)
   const countryInput = React.useRef<HTMLInputElement>(null)
 
-  const [customer, setCustomer] = useState<customerTypes>()
+  const [customer, setCustomer] = useState<CustomerTypes>()
 
   const navigate = useNavigate()
 
