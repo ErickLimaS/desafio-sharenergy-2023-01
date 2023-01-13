@@ -20,11 +20,14 @@ function Login() {
 
         e.preventDefault()
 
+        const form = e.target as HTMLFormElement
+
         store.dispatch(loginUser(
             'login',
             {
                 username: usernameInput.current!.value,
-                password: passwordInput.current!.value
+                password: passwordInput.current!.value,
+                rememberMe: form.remember_me.checked ? true : false
             }
         ))
 
@@ -56,7 +59,7 @@ function Login() {
                             <input type='text' placeholder='Username'
                                 id={Styles.usernameInput} name='username'
                                 ref={usernameInput}
-                                // defaultValue='desafiosharenergy'
+                            // defaultValue='desafiosharenergy'
                             ></input>
                         </label>
                         <small>Ofericido pelo desafio.</small>
@@ -71,6 +74,15 @@ function Login() {
                             ></input>
                         </label>
                         <small>Ofericida pelo desafio.</small>
+                    </div>
+                    <div id={Styles.remember_me_container}>
+                        <label>
+                            Lembre de mim
+                            <input type='checkbox'
+                                id={Styles.remember_me} name='remember_me'
+                                value='true'
+                            ></input>
+                        </label>
                     </div>
 
                     <button type='submit'

@@ -8,12 +8,12 @@ export function loginAdminUserReducer(state = {}, action: AnyAction) {
         case USER_LOGIN_REQUEST:
             return { ...state, loading: true }
         case USER_LOGIN_SUCCESS:
-            return { ...state, loginUser: action.payload, loading: false, success: true }
+            return { ...action.payload , loading: false,  success: true }
         case USER_LOGIN_FAIL:
             return { ...state, message: action.payload, loading: false, success: false }
         default:
             return state
-            
+
     }
 
 }
@@ -25,7 +25,7 @@ export function logoutAdminUserReducer(state = {}, action: AnyAction) {
         case USER_LOGOUT_REQUEST:
             return { ...state, loading: true }
         case USER_LOGOUT_SUCCESS:
-            return { ...state, loginUser: action.payload, loading: false, success: true }
+            return { ...action.payload, loading: false, success: true }
         case USER_LOGOUT_FAIL:
             return { ...state, message: action.payload, loading: false, success: false }
         default:
