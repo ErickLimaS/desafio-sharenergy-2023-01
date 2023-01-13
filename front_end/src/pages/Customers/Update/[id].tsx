@@ -105,7 +105,7 @@ function UpdateCustomer() {
         email: emailInput.current!.value,
         address: {
           street: streetInput.current!.value,
-          county: countryInput.current!.value,
+          county: countyInput.current!.value,
           state: stateInput.current!.value,
           country: countryInput.current!.value
         },
