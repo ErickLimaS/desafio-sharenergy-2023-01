@@ -1,4 +1,56 @@
-# Desafio para o processo seletivo SHARENERGY 2023/01
+<h1 align="center">Sobre o Projeto</h1>
+
+<p align="center">
+  <a href="https://youtu.be/dN9fDZcsnK0">
+   <img src='https://user-images.githubusercontent.com/69987890/212392263-6e1467fc-7e28-4f3e-a5ce-24be8813b79d.png'></img>
+  </a>
+</p>
+
+<p align="center">
+ Vídeo do projeto: https://youtu.be/dN9fDZcsnK0
+</p>
+
+<h2>Como Rodar Esse Projeto</h2>
+
+<b>Dentro da pasta</b> ``/back_end``
+
+- Instale as dependências com ``npm install`` no Prompt de Comando/CLI.
+- Inicie o Banco de Dados com ``npm run devStart``.
+- Assim, o BD deve ter sido iniciado na porta 8000, com o link ficando assim: ``http://localhost:8000/``.
+- Caso não tenha funcionado, cheque se a porta 8000 já está sendo usada por outro APP.
+
+<b>Dentro da pasta</b> ``/front_end``
+
+- Instale as dependências com ``npm install`` no Prompt de Comando/CLI.
+- Inicie o projeto com ``npm run start``, com isso será inicialmente rodado pela porta 3000.
+- Com tudo correndo como programado, acesse a página inicial pelo link ``http://localhost:3000/``.
+- Caso não tenha funcionado, cheque se a porta 3000 já está sendo usada por outro APP.
+
+<b>Pronto! Agora o projeto está funcionando como planejado!</b>
+
+## 🔨 Dependências utilizadas
+
+<b>Front End</b>
+
+- [x] ``React``
+- [x] ``TypeScript``
+- [x] ``Redux``
+- [x] ``Axios``
+- [x] ``React-Router-Dom``
+- [x] ``Sweet Alert 2``
+
+<b>Back End</b>
+
+- [x] ``Mongoose``
+- [x] ``Express``
+- [x] ``Express Async Handler``
+- [x] ``JWT - Json Web Token``
+- [x] ``Bcrypt``
+- [x] ``DotEnv``
+- [x] ``Cors``
+- [x] ``Body-Parser``
+
+## Readme.md ORIGINAL
 
 Repositório destinado aos interessados em participar do processo seletivo da SHARENERGY 2023/01. As vagas são voltadas para desenvolvimento de aplicações Web e Mobile.
 
