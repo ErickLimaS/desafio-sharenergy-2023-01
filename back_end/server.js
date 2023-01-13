@@ -19,6 +19,8 @@ app.use(cors())
 
 app.use(bodyParser.json())
 
+mongoose.set('strictQuery', true)
+
 mongoose.connect(process.env.MONGODB_URL).then(
     console.log('DB Conectado.')
 )
@@ -28,6 +30,6 @@ app.use('/customer', customerRouter)
 
 app.listen(PORT, () => {
 
-    console.log(`Connect on PORT ${PORT}`)
+    console.log(`Connected on PORT ${PORT}`)
 
 })

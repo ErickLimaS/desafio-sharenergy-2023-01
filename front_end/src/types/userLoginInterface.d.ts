@@ -1,4 +1,5 @@
 interface UserLoginTypes {
     username: string,
-    password: string
+    password: string,
+    rememberMe: boolean
 }

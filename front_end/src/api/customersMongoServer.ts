@@ -3,12 +3,13 @@ import { store } from "../store";
 
 const URL = 'http://localhost:8000/customer'
 
-const storeState: any = store.getState()
-const { adminUser } = storeState
-
 // configurarion for requests
 const reqConfig = (route?: string, body?: CustomerTypes, customerId?: string) => {
 
+    const storeState: any = store.getState()
+
+    const { adminUser } = storeState
+    
     let methodByRoute: string = ''
 
     switch (route) {

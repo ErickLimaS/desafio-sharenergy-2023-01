@@ -109,6 +109,37 @@
 
 }
 
+.form_container form #remember_me_container{
+
+    margin: 8px 0;
+
+}
+
+.form_container form #remember_me_container label{
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-size: var(--fs-minus-1);
+
+}
+
+.form_container form #remember_me_container input[type='checkbox']{
+
+    cursor: pointer;
+
+    margin: 0;
+    margin-right: 8px;
+
+    width: 16px;
+    height: 16px;
+
+    accent-color: var(--secondary);
+
+}
+
 .form_container form>div small {
 
     margin-top: 2px;
@@ -118,7 +149,6 @@
     color: var(--black-75);
 
 }
-
 
 .form_container form button[type='submit'] {
 
@@ -139,6 +169,8 @@
 }
 
 .form_container form button[type='submit'][disabled] {
+
+    cursor: default;
 
     background-color: transparent;
 

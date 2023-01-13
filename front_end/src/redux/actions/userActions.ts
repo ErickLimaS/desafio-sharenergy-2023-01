@@ -3,15 +3,6 @@ import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT_FA
 import { loginAdminUser } from "../../api/userMongoServer"
 import { AnyAction } from "redux"
 
-interface serverResponseTypes {
-    success: boolean,
-    user?: {
-        username: string,
-        token: string
-    },
-    message?: string
-}
-
 export const loginUser = (action: string, userLoginInfo?: UserLoginTypes) => async (dispatch: Dispatch<AnyAction>) => {
 
     switch (action) {
@@ -65,15 +56,25 @@ export const loginUser = (action: string, userLoginInfo?: UserLoginTypes) => asy
 
                 }
 
-                localStorage.setItem('username', res.account.username)
-                localStorage.setItem('token', res.account.token)
+                if (userLoginInfo?.rememberMe === true) {
+
+                    localStorage.setItem('username', res.account.username)
+                    localStorage.setItem('token', res.account.token)
+
+                    dispatch({
+                        type: USER_LOGIN_SUCCESS,
+                        payload: res.account
+                    })
+
+                    return window.location.reload()
+
+                }
 
                 dispatch({
                     type: USER_LOGIN_SUCCESS,
                     payload: res.account
                 })
-                
-                window.location.reload()
+
 
             }
             catch (error: unknown) {
