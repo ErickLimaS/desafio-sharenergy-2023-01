@@ -1,6 +1,7 @@
 import Axios from "axios";
 
-const URL = 'http://localhost:8000/admin'
+// const URL = 'http://localhost:8000/admin'
+const URL = 'https://desafio-sharenergy-9ttl.onrender.com/admin'
 
 // configutarion for requests
 const reqConfig = (route?: string, body?: UserLoginTypes) => {
@@ -19,7 +20,7 @@ export async function loginAdminUser(userInfo?: UserLoginTypes) {
 
     try {
 
-        const {data} = await Axios(reqConfig('login', userInfo))
+        const { data } = await Axios(reqConfig('login', userInfo))
 
         return data
 
